@@ -78,7 +78,7 @@ def get_leagues(db:Session,
                 min_last_changed_date: date = None,
                 league_name: str = None) -> List[League]:
     
-    statement = select(League)
+    statement = select(League).options(selectinload(League.teams))
 
     if min_last_changed_date is not None:
         statement = statement.where(
