@@ -8,18 +8,10 @@ from models import Player, Performance, League, Team
 from sqlalchemy import func
 
 
-def get_player_by_id(
-    db: Session,
-    player_id: int) -> Optional[Player]:
+def get_player_by_id(db: Session,
+                     player_id: int) -> List[Player]:
     
-    statement = (
-        select(Player)
-        .where(Player.player_id == player_id)
-        .options(
-            selectinload(Player.performances),
-            selectinload(Player.teams)
-        )
-    )
+    statement = (select(Player).where(Player.player_id == player_id))
     return db.exec(statement).first()
 
 def get_players(
