@@ -15,4 +15,4 @@ def getSession():
     with Session(engine) as session:
         yield session
 
-SessionDep = Annotated[Session, Depends(getSession)]
+#SessionDep = Annotated[Session, Depends(getSession)]

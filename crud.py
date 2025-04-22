@@ -2,7 +2,7 @@ from datetime import date
 from typing import Optional, List
 
 from sqlmodel import Session, select
-from sqlmodel.orm import selectinload 
+from sqlalchemy.orm import selectinload 
 
 from models import Player, Performance, League, Team
 from sqlalchemy import func
@@ -20,7 +20,7 @@ def get_players(
     limit: int = 100,
     min_last_changed_date: Optional[date] = None,
     first_name: Optional[str] = None,
-    last_name: Optional[str] = None) -> List[Player]:
+    last_name: Optional[str] = None):
 
     statement = select(Player)
 
