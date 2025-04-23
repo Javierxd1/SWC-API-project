@@ -39,9 +39,20 @@ Una API RESTful construida con **FastAPI** y **SQLModel** para la gestión de da
 ```bash
 git clone https://github.com/Javierxd1/SWC-API-project.git
 cd SWC-API-project
+```
 
+2. **Crear el entorno virtual y ejecutarlo**
+```bash
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
+```
 
+3. **Instalar las dependencias**
+```bash
 pip install -r requirements.txt
+```
+
+4. **Ejecutar la aplicación**
+```bash
+fastapi dev app/main.py
 ```
