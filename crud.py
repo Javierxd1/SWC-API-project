@@ -9,9 +9,9 @@ from sqlalchemy import func
 
 
 def get_player_by_id(db: Session,
-                     player_id: int) -> List[Player]:
+                     player_id: int):
     
-    statement = (select(Player).where(Player.player_id == player_id))
+    statement = select(Player).where(Player.player_id == player_id)
     return db.exec(statement).first()
 
 def get_players(
@@ -61,7 +61,7 @@ def get_performances(
 def get_league(db:Session,
                league_id: int):
     
-    statement = select(League).where(League.league_id == league_id)
+    statement = select(League).where(League.league_id == league_id).options(selectinload(League.teams))
     return db.exec(statement).first()
 
 def get_leagues(db:Session,
@@ -117,12 +117,12 @@ def get_teams(db:Session,
 ##Analytics Queries
 def get_player_count(db:Session) -> int:
     statement = select(func.count(Player.player_id))
-    return db.exec(statement).scalar_one()
+    return db.exec(statement).first()
 
 def get_team_count(db:Session) -> int:
     statement = select(func.count(Team.team_id))
-    return db.exec(statement).scalar_one()
+    return db.exec(statement).first()
 
 def get_league_count(db:Session) -> int:
     statement = select(func.count(League.league_id))
-    return db.exec(statement).scalar_one()
+    return db.exec(statement).first()

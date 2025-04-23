@@ -10,6 +10,7 @@ class Performance(BaseModel):
     week_number : str
     fantasy_points : float
     last_changed_date : date
+
         
 class PlayerBase(BaseModel):
     model_config = ConfigDict(from_attributes = True)    
@@ -20,9 +21,12 @@ class PlayerBase(BaseModel):
     position : str
     last_changed_date : date
 
+
 class Player(PlayerBase):
     model_config = ConfigDict(from_attributes = True)
     performances: List[Performance] = []
+
+
 
 class TeamBase(BaseModel):
     model_config = ConfigDict(from_attributes = True)
